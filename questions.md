@@ -7,8 +7,6 @@ but the PureComponent implements a shallow comparison of props and state, and on
 ### Example :
 For instance, let's say we have a lengthy list of items, and each item is representedby a separate component. If any changes occur in the state of these items, it willresult in a re-rendering of all components. This can be problematic, as it could causeunnecessary re-renders of items that were not affected by the state change,potentially slowing down the app's performance.
 
--------
-
 ## 2 - Context + ShouldComponentUpdate might be dangerous. Can think of why is that?
 
 The problem is that if we use `shouldComponentUpdate` in a component that relies on data from Context, we may accidentally block the propagation of that data. If the data in the Context changes but the component's props or state haven't changed in a meaningful way, `shouldComponentUpdate` may incorrectly determine that the component doesn't need to be re-rendered. As a result, the data from Context may not be propagated to the child components that need it.
