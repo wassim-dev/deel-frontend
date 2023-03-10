@@ -20,7 +20,7 @@ export function highlightMatching(str: string, searchTerm: string): string {
   try {
     const regex = new RegExp(`(${regexStr})`, 'gi');
 
-    // Replace any matches with the matched text wrapped in <strong> tags
+    // Remove HTML tags and replace any matches with the matched text wrapped in <strong> tags
     return removeHtmlTags(str).replace(regex, '<strong>$1</strong>');
   } catch (e) {
     console.error(e);
@@ -65,7 +65,7 @@ export async function fetchLocationData(q: string): Promise<string[]> {
   // Parse the response as JSON
   let data = await response.json();
 
-  // If the response is an array, map each item to its display_name property and remove HTML tags
+  // If the response is an array, map each item to its display_name property
   if (Array.isArray(data)) {
     data = data.map((item) => item.display_name);
   }
